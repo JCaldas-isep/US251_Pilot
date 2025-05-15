@@ -1,0 +1,10 @@
+HEXAGON testeID <10, 15, 20>
+MOVE testeID TO <420, 50, 50> IN 30s
+
+SQUARE boasPessoal <0, -2, 47>
+ROTATE boasPessoal BY <180º> ON x IN 40s
+
+CIRCLE myShape <1, 2, 3>
+TURN myShape <MAGENTA>
+
+TRIANGLE illuminati <69, 69, 69>
