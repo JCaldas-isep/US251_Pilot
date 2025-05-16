@@ -15,6 +15,6 @@ public class Move implements Animation {
 
     @Override
     public String toString() {
-        return "Move to " + this.destination + " taking " + this.time + " seconds.";
+        return "Moves to " + this.destination + " taking " + this.time + " seconds.";
     }
 }

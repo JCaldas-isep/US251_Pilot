@@ -4,6 +4,7 @@ import antlr.grammar.ShapeGrammarBaseListener;
 import antlr.grammar.ShapeGrammarParser;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ShapeListener extends ShapeGrammarBaseListener {
     private String currentType;
@@ -49,16 +50,16 @@ public class ShapeListener extends ShapeGrammarBaseListener {
     @Override
     public void exitMoveAnimation(ShapeGrammarParser.MoveAnimationContext ctx) {
         String id = ctx.ID().getText();
-//        List<String> coords = ctx.coordinateList().coordinate().stream()
-//                .map(coord -> coord.getText())
-//                .toList();
-        Position destination = new Position(0 ,0 ,0);
+        List<String> coords = ctx.coordinateList().coordinate().stream().map(x -> x.getText()).collect(Collectors.toList());
+        Position destination = new Position(coords);
         double time = Double.parseDouble(ctx.time().SIGNED_NUMBER().getText());
 
         Move move = new Move(destination, time);
-        Shape target = shapeStack.get(id);
+        Shape target = this.shapeStack.get(id);
         if (target != null) { target.addAnimation(move); }
     }
+
+
 
     @Override
     public void exitRotateAnimation(ShapeGrammarParser.RotateAnimationContext ctx) {
@@ -68,7 +69,7 @@ public class ShapeListener extends ShapeGrammarBaseListener {
         double time = Double.parseDouble(ctx.time().SIGNED_NUMBER().getText());
 
         Rotate rotate = new Rotate(angle, axis, time);
-        Shape target = shapeStack.get(id);
+        Shape target = this.shapeStack.get(id);
         if (target != null) { target.addAnimation(rotate); }
     }
 
@@ -78,7 +79,17 @@ public class ShapeListener extends ShapeGrammarBaseListener {
         String colour = ctx.colour().getText();
 
         Turn turn = new Turn(colour);
-        Shape target = shapeStack.get(id);
+        Shape target = this.shapeStack.get(id);
         if (target != null) { target.addAnimation(turn); }
+    }
+
+    @Override
+    public void exitPauseAnimation(ShapeGrammarParser.PauseAnimationContext ctx) {
+        String id = ctx.ID().getText();
+        double time = Double.parseDouble(ctx.time().SIGNED_NUMBER().getText());
+
+        Pause pause = new Pause(time);
+        Shape target = this.shapeStack.get(id);
+        if (target != null) { target.addAnimation(pause); }
     }
 }

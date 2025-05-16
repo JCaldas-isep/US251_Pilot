@@ -90,6 +90,16 @@ public interface ShapeGrammarListener extends ParseTreeListener {
 	 */
 	void exitTurnAnimation(ShapeGrammarParser.TurnAnimationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ShapeGrammarParser#pauseAnimation}.
+	 * @param ctx the parse tree
+	 */
+	void enterPauseAnimation(ShapeGrammarParser.PauseAnimationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShapeGrammarParser#pauseAnimation}.
+	 * @param ctx the parse tree
+	 */
+	void exitPauseAnimation(ShapeGrammarParser.PauseAnimationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ShapeGrammarParser#shapeType}.
 	 * @param ctx the parse tree
 	 */

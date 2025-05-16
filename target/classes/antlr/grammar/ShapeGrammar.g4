@@ -11,7 +11,7 @@ program
 
 // A shape followed optionally by an animation
 shapeBlock
-    : shapeDefinition animation?
+    : shapeDefinition animation*
     ;
 
 // domain.Shape Definition
@@ -29,6 +29,7 @@ animation
     : moveAnimation
     | rotateAnimation
     | turnAnimation
+    | pauseAnimation
     ;
 
 // MOVE shape_name <x, y, z> IN <time>
@@ -44,6 +45,11 @@ rotateAnimation
 // TURN shape_name <colour>
 turnAnimation
     : 'TURN' ID '<' colour '>'
+    ;
+
+// PAUSE shape_name FOR <time>
+pauseAnimation
+    : 'PAUSE' ID 'FOR' time
     ;
 
 // domain.Shape Types

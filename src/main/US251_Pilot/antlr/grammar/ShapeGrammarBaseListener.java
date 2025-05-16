@@ -115,6 +115,18 @@ public class ShapeGrammarBaseListener implements ShapeGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPauseAnimation(ShapeGrammarParser.PauseAnimationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPauseAnimation(ShapeGrammarParser.PauseAnimationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterShapeType(ShapeGrammarParser.ShapeTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
