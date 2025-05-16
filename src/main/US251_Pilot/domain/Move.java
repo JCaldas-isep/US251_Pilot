@@ -9,6 +9,10 @@ public class Move implements Animation {
         this.time = time;
     }
 
+    public Position getDestination() { return this.destination; }
+
+    public double getTime() { return this.time; }
+
     public String getType() {
         return "MOVE";
     }
@@ -17,4 +21,5 @@ public class Move implements Animation {
     public String toString() {
         return "Moves to " + this.destination + " taking " + this.time + " seconds.";
     }
+
 }

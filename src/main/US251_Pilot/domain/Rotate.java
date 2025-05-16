@@ -11,6 +11,12 @@ public class Rotate implements Animation {
         this.time = time;
     }
 
+    public int getAngle() { return this.angle; }
+
+    public String getAxis( ) { return this.axis; }
+
+    public double getTime() { return this.time; }
+
     public String getType() {
         return "ROTATE";
     }

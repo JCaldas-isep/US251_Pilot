@@ -7,6 +7,8 @@ public class Turn implements Animation {
         this.colour = colour;
     }
 
+    public String getColour() { return this.colour; }
+
     public String getType() {
         return "TURN";
     }

@@ -7,6 +7,8 @@ public class Pause implements Animation {
         this.time = time;
     }
 
+    public double getTime() { return this.time; }
+
     public String getType() {
         return "PAUSE";
     }

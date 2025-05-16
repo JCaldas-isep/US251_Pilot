@@ -38,4 +38,6 @@ public class Position {
     public String toString() {
         return "X=" + this.X + ", Y=" + this.Y + ", Z=" + this.Z;
     }
+
+    public String toTuple() { return "(" + this.X + ", " + this.Y + ", " + this.Z + ")"; }
 }
