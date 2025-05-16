@@ -1,5 +1,9 @@
 grammar ShapeGrammar;
 
+@header {
+package antlr.grammar;
+}
+
 // Entry rule
 program
     : (shapeBlock)+ EOF
@@ -10,9 +14,9 @@ shapeBlock
     : shapeDefinition animation?
     ;
 
-// Shape Definition
+// domain.Shape Definition
 shapeDefinition
-    : shapeType ID '<' coordinateList '>'
+    : shapeType ID '<' coordinateList '>' 'WITH' droneAmount
     ;
 
 // Coordinate List
@@ -42,7 +46,7 @@ turnAnimation
     : 'TURN' ID '<' colour '>'
     ;
 
-// Shape Types
+// domain.Shape Types
 shapeType
     : 'SQUARE'
     | 'TRIANGLE'
@@ -52,6 +56,7 @@ shapeType
 
 // Values
 coordinate      : SIGNED_NUMBER ;
+droneAmount     : SIGNED_NUMBER ;
 angle           : SIGNED_NUMBER 'º' ;
 time            : SIGNED_NUMBER 's' ;
 axis            : 'x' | 'y' | 'z' ;
@@ -66,3 +71,4 @@ SIGNED_NUMBER   : '-'? DIGIT+ ;
 DIGIT           : [0-9] ;
 
 WS              : [ \t\r\n]+ -> skip ;
+COMMENT         : '##' ~[\r\n]* -> skip ;

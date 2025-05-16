@@ -1,3 +1,5 @@
+package domain;
+
 public enum ShapeType {
     SQUARE("SQUARE", 4),
     TRIANGLE("TRIANGLE", 3),

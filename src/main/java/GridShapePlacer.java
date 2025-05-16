@@ -17,7 +17,7 @@ public class GridShapePlacer extends JFrame {
     }
 
     public GridShapePlacer() {
-        super("Grid Shape Placer");
+        super("Grid domain.Shape Placer");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 700);
         setLayout(new BorderLayout());
@@ -28,7 +28,7 @@ public class GridShapePlacer extends JFrame {
         JButton finishButton = new JButton("Finish");
         JButton playButton = new JButton("Play Animation");
 
-        controlPanel.add(new JLabel("Shape:"));
+        controlPanel.add(new JLabel("domain.Shape:"));
         controlPanel.add(shapeSelector);
         controlPanel.add(new JLabel("Side Length:"));
         controlPanel.add(sideField);
@@ -236,7 +236,7 @@ public class GridShapePlacer extends JFrame {
                 colorMenu.add(item);
             }
 
-            JMenuItem rotateItem = new JMenuItem("Rotate Shape");
+            JMenuItem rotateItem = new JMenuItem("Rotate domain.Shape");
             rotateItem.addActionListener(e -> {
                 if (selectedShape != null && !selectedShape.rotating) {
                     String input = JOptionPane.showInputDialog("Enter duration (sec) for full rotation:");
@@ -249,7 +249,7 @@ public class GridShapePlacer extends JFrame {
                 }
             });
 
-            JMenuItem moveItem = new JMenuItem("Translate Shape");
+            JMenuItem moveItem = new JMenuItem("Translate domain.Shape");
             moveItem.addActionListener(e -> {
                 if (selectedShape != null && !selectedShape.translating) {
                     String inputX = JOptionPane.showInputDialog("Enter new grid X:");
@@ -279,7 +279,7 @@ public class GridShapePlacer extends JFrame {
                 }
             });
 
-            JMenuItem deleteItem = new JMenuItem("Delete Shape");
+            JMenuItem deleteItem = new JMenuItem("Delete domain.Shape");
             deleteItem.addActionListener(e -> {
                 placedShapes.remove(selectedShape);
                 selectedShape = null;
@@ -386,7 +386,7 @@ public class GridShapePlacer extends JFrame {
 
     static class ReportGenerator {
         public static void generate(ArrayList<PlacedShape> shapes) {
-            System.out.println("=== Shape Placement Report ===");
+            System.out.println("=== domain.Shape Placement Report ===");
             for (PlacedShape s : shapes) {
                 double area = switch (s.type) {
                     case "Square" -> s.side * s.side;
@@ -394,7 +394,7 @@ public class GridShapePlacer extends JFrame {
                     case "Hexagon" -> (3 * Math.sqrt(3) / 2) * s.side * s.side;
                     default -> 0;
                 };
-                System.out.printf("Type: %s | Grid Position: (%d, %d) | Area: %.2f", s.type, s.gridX, s.gridY, area);
+                System.out.printf("Type: %s | Grid domain.Position: (%d, %d) | Area: %.2f", s.type, s.gridX, s.gridY, area);
                 if (s.rotating) {
                     System.out.printf(" | Rotates every %.2f seconds", s.rotationDuration);
                 }

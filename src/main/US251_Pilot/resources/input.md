@@ -1,0 +1,11 @@
+HEXAGON testeID <10, 15, 20> WITH 6
+MOVE testeID TO <420, 50, 50> IN 30s
+
+## this is how to create a SQUARE shape
+SQUARE boasPessoal <0, -2, 47> WITH 420 
+ROTATE boasPessoal BY <180º> ON x IN 40s
+
+CIRCLE myShape <1, 2, 3> WITH 10
+TURN myShape <MAGENTA>
+
+TRIANGLE illuminati <69, 69, 69> WITH 30

@@ -1,4 +1,7 @@
 // Generated from ./ShapeGrammar.g4 by ANTLR 4.13.2
+
+package antlr.grammar;
+
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -106,6 +109,16 @@ public interface ShapeGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCoordinate(ShapeGrammarParser.CoordinateContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShapeGrammarParser#droneAmount}.
+	 * @param ctx the parse tree
+	 */
+	void enterDroneAmount(ShapeGrammarParser.DroneAmountContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShapeGrammarParser#droneAmount}.
+	 * @param ctx the parse tree
+	 */
+	void exitDroneAmount(ShapeGrammarParser.DroneAmountContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ShapeGrammarParser#angle}.
 	 * @param ctx the parse tree

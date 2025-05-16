@@ -14,7 +14,7 @@ public class InteractiveShapePlacer extends JFrame {
     }
 
     public InteractiveShapePlacer() {
-        super("Interactive Shape Placer");
+        super("Interactive domain.Shape Placer");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 700);
         setLayout(new BorderLayout());
@@ -23,7 +23,7 @@ public class InteractiveShapePlacer extends JFrame {
         JPanel controlPanel = new JPanel();
         shapeSelector = new JComboBox<>(new String[]{"Square", "Triangle", "Hexagon"});
         sideField = new JTextField("50", 5);
-        controlPanel.add(new JLabel("Shape:"));
+        controlPanel.add(new JLabel("domain.Shape:"));
         controlPanel.add(shapeSelector);
         controlPanel.add(new JLabel("Side Length:"));
         controlPanel.add(sideField);

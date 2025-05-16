@@ -23,12 +23,12 @@ public class Main {
             }
 
             if (collides) {
-                System.out.println("❌ Error: Shape collides with existing shape. Try different coordinates or size.");
+                System.out.println("❌ Error: domain.Shape collides with existing shape. Try different coordinates or size.");
                 continue;
             }
 
             shapes.add(shape);
-            System.out.println("✅ Shape added successfully. Add another? (y/n)");
+            System.out.println("✅ domain.Shape added successfully. Add another? (y/n)");
             String again = scanner.nextLine();
             running = again.equalsIgnoreCase("y");
         }
