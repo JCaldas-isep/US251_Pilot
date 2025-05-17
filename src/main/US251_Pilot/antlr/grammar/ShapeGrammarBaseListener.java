@@ -55,6 +55,30 @@ public class ShapeGrammarBaseListener implements ShapeGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterShapeWithSingleSize(ShapeGrammarParser.ShapeWithSingleSizeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShapeWithSingleSize(ShapeGrammarParser.ShapeWithSingleSizeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRectangleShape(ShapeGrammarParser.RectangleShapeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRectangleShape(ShapeGrammarParser.RectangleShapeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCoordinateList(ShapeGrammarParser.CoordinateListContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -127,13 +151,13 @@ public class ShapeGrammarBaseListener implements ShapeGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterShapeType(ShapeGrammarParser.ShapeTypeContext ctx) { }
+	@Override public void enterShapeTypeSingleSize(ShapeGrammarParser.ShapeTypeSingleSizeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitShapeType(ShapeGrammarParser.ShapeTypeContext ctx) { }
+	@Override public void exitShapeTypeSingleSize(ShapeGrammarParser.ShapeTypeSingleSizeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -146,6 +170,18 @@ public class ShapeGrammarBaseListener implements ShapeGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCoordinate(ShapeGrammarParser.CoordinateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSizeValue(ShapeGrammarParser.SizeValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSizeValue(ShapeGrammarParser.SizeValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -19,7 +19,7 @@ public class Turn implements Animation {
 
     @Override
     public String toString() {
-        return "Turns " + this.colour + "for " + this.time + " seconds.";
+        return "Turns " + this.colour + " for " + this.time + " seconds.";
     }
 }
 

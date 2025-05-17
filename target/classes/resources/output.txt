@@ -1,0 +1,57 @@
+DSL version 1.1.23;
+
+DroneType droneTypeA;
+
+Position pos1 = (69, 69, 69);
+Distance lengthilluminati = 10;
+Triangle illuminati(pos1, lengthilluminati, droneTypeA);
+
+Position pos2 = (0, -2, 47);
+Distance lengthboasPessoal = 10;
+Square boasPessoal(pos2, lengthboasPessoal, droneTypeA);
+
+Velocity rotVelboasPessoal = PI/10;
+Position xAxis = (1,0,0);
+Position pos3 = (1, 2, 3);
+Distance lengthmyShape = 10;
+Circle myShape(pos3, lengthmyShape, droneTypeA);
+
+Position pos4 = (10, 15, 20);
+Distance lengthtesteID = 10;
+Hexagon testeID(pos4, lengthtesteID, droneTypeA);
+
+Position pos5 = (420, 50, 50);
+Velocity veltesteID = 5.0;
+Velocity veltesteID = 5.0;
+Velocity rotVeltesteID = PI/10;
+Position zAxis = (0,0,1);
+
+before
+pause(3600);
+endbefore
+
+illuminati.lightsOff;
+
+before
+	boasPessoal.rotate(pos2, xAxis, PI, rotVelboasPessoal);
+	boasPessoal.lightsOn(BLUE);
+endbefore
+
+boasPessoal.lightsOff;
+
+before
+	myShape.lightsOn(MAGENTA);
+endbefore
+
+myShape.lightsOff;
+
+before
+	testeID.move(pos5, 30, veltesteID);
+pause(3600);
+	testeID.move(pos4, 30, veltesteID);
+	testeID.rotate(pos4, zAxis, 2*PI, rotVeltesteID);
+	testeID.lightsOn(BLUE);
+endbefore
+
+testeID.lightsOff;
+

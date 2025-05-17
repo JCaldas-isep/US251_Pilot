@@ -40,6 +40,26 @@ public interface ShapeGrammarListener extends ParseTreeListener {
 	 */
 	void exitShapeDefinition(ShapeGrammarParser.ShapeDefinitionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ShapeGrammarParser#shapeWithSingleSize}.
+	 * @param ctx the parse tree
+	 */
+	void enterShapeWithSingleSize(ShapeGrammarParser.ShapeWithSingleSizeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShapeGrammarParser#shapeWithSingleSize}.
+	 * @param ctx the parse tree
+	 */
+	void exitShapeWithSingleSize(ShapeGrammarParser.ShapeWithSingleSizeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShapeGrammarParser#rectangleShape}.
+	 * @param ctx the parse tree
+	 */
+	void enterRectangleShape(ShapeGrammarParser.RectangleShapeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShapeGrammarParser#rectangleShape}.
+	 * @param ctx the parse tree
+	 */
+	void exitRectangleShape(ShapeGrammarParser.RectangleShapeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ShapeGrammarParser#coordinateList}.
 	 * @param ctx the parse tree
 	 */
@@ -100,15 +120,15 @@ public interface ShapeGrammarListener extends ParseTreeListener {
 	 */
 	void exitPauseAnimation(ShapeGrammarParser.PauseAnimationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ShapeGrammarParser#shapeType}.
+	 * Enter a parse tree produced by {@link ShapeGrammarParser#shapeTypeSingleSize}.
 	 * @param ctx the parse tree
 	 */
-	void enterShapeType(ShapeGrammarParser.ShapeTypeContext ctx);
+	void enterShapeTypeSingleSize(ShapeGrammarParser.ShapeTypeSingleSizeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ShapeGrammarParser#shapeType}.
+	 * Exit a parse tree produced by {@link ShapeGrammarParser#shapeTypeSingleSize}.
 	 * @param ctx the parse tree
 	 */
-	void exitShapeType(ShapeGrammarParser.ShapeTypeContext ctx);
+	void exitShapeTypeSingleSize(ShapeGrammarParser.ShapeTypeSingleSizeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ShapeGrammarParser#coordinate}.
 	 * @param ctx the parse tree
@@ -119,6 +139,16 @@ public interface ShapeGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCoordinate(ShapeGrammarParser.CoordinateContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShapeGrammarParser#sizeValue}.
+	 * @param ctx the parse tree
+	 */
+	void enterSizeValue(ShapeGrammarParser.SizeValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShapeGrammarParser#sizeValue}.
+	 * @param ctx the parse tree
+	 */
+	void exitSizeValue(ShapeGrammarParser.SizeValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ShapeGrammarParser#droneAmount}.
 	 * @param ctx the parse tree

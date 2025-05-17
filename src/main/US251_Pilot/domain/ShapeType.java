@@ -4,7 +4,9 @@ public enum ShapeType {
     SQUARE("SQUARE", 4),
     TRIANGLE("TRIANGLE", 3),
     HEXAGON("HEXAGON", 6),
-    CIRCLE("CIRCLE", 1);
+    CIRCLE("CIRCLE", 1),
+    RECTANGLE("RECTANGLE", 4),
+    LINE("LINE", 2);
 
     //attributes
     private String lexerIdentifier;

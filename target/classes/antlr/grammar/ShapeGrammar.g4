@@ -9,14 +9,22 @@ program
     : (shapeBlock)+ EOF
     ;
 
-// A shape followed optionally by an animation
 shapeBlock
     : shapeDefinition animation*
     ;
 
-// domain.Shape Definition
+// Shape definitions with updated SIZE syntax
 shapeDefinition
-    : shapeType ID '<' coordinateList '>' 'WITH' droneAmount
+    : shapeWithSingleSize
+    | rectangleShape
+    ;
+
+shapeWithSingleSize
+    : shapeTypeSingleSize ID '(' coordinateList ')' 'SIZE' sizeValue 'WITH' droneAmount 'DRONES'
+    ;
+
+rectangleShape
+    : 'RECTANGLE' ID '(' coordinateList ')' 'SIZE' sizeValue ',' sizeValue 'WITH' droneAmount 'DRONES'
     ;
 
 // Coordinate List
@@ -32,40 +40,42 @@ animation
     | pauseAnimation
     ;
 
-// MOVE shape_name <x, y, z> IN <time>
+// MOVE shape_name TO <x, y, z> IN <time>
 moveAnimation
-    : 'MOVE' ID 'TO' '<' coordinateList '>' 'IN' time
+    : 'MOVE' ID 'TO' '(' coordinateList ')' 'IN' time
     ;
 
-// ROTATE shape_name <angle> ON <axis> IN <time>
+// ROTATE shape_name BY <angle> ON axis IN time
 rotateAnimation
     : 'ROTATE' ID 'BY' '<' angle '>' 'ON' axis 'IN' time
     ;
 
-// TURN shape_name <colour>
+// TURN shape_name <colour> FOR time
 turnAnimation
     : 'TURN' ID '<' colour '>' 'FOR' time
     ;
 
-// PAUSE shape_name FOR <time>
+// PAUSE shape_name FOR time
 pauseAnimation
     : 'PAUSE' ID 'FOR' time
     ;
 
-// domain.Shape Types
-shapeType
+// Shape types with a single size
+shapeTypeSingleSize
     : 'SQUARE'
     | 'TRIANGLE'
     | 'HEXAGON'
     | 'CIRCLE'
+    | 'LINE'
     ;
 
 // Values
-coordinate      : SIGNED_NUMBER ;
-droneAmount     : SIGNED_NUMBER ;
-angle           : SIGNED_NUMBER 'º' ;
-time            : SIGNED_NUMBER 's' ;
-axis            : 'x' | 'y' | 'z' ;
+coordinate    : SIGNED_NUMBER ;
+sizeValue     : SIGNED_NUMBER 'm';
+droneAmount   : SIGNED_NUMBER ;
+angle         : SIGNED_NUMBER 'º' ;
+time          : SIGNED_NUMBER 's' ;
+axis          : 'x' | 'y' | 'z' ;
 colour
     : 'RED' | 'GREEN' | 'BLUE'
     | 'MAGENTA' | 'YELLOW' | 'CYAN' | 'WHITE'

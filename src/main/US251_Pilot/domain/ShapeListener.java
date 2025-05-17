@@ -11,20 +11,38 @@ public class ShapeListener extends ShapeGrammarBaseListener {
     private String currentId;
     private List<String> currentCoords = new ArrayList<>();
     private int droneAmount;
+    private Integer sizeValue = null;
+    private List<Integer> sizeValues = null;  // for rectangles with two sizes
 
     public Map<String, Shape> shapeStack = new HashMap<>();
 
     public Map<String, Shape> getResult() { return this.shapeStack; }
 
     @Override
-    public void enterShapeType(ShapeGrammarParser.ShapeTypeContext ctx) {
-        this.currentType = ctx.getText();
+    public void enterShapeWithSingleSize(ShapeGrammarParser.ShapeWithSingleSizeContext ctx) {
+        this.currentType = ctx.shapeTypeSingleSize().getText();
+        this.currentId = ctx.ID().getText();
+        this.currentCoords.clear();
+        this.sizeValue = Integer.parseInt(ctx.sizeValue().SIGNED_NUMBER().getText());
+        this.sizeValues = null;  // clear multi sizes
+        this.droneAmount = Integer.parseInt(ctx.droneAmount().getText());
+        // coords will be collected in enterCoordinate
     }
 
     @Override
-    public void enterShapeDefinition(ShapeGrammarParser.ShapeDefinitionContext ctx) {
+    public void enterRectangleShape(ShapeGrammarParser.RectangleShapeContext ctx) {
+        this.currentType = "RECTANGLE";
         this.currentId = ctx.ID().getText();
         this.currentCoords.clear();
+
+        // Get sizes (two values)
+        this.sizeValues = new ArrayList<>();
+        this.sizeValues.add(Integer.parseInt(ctx.sizeValue(0).SIGNED_NUMBER().getText()));
+        this.sizeValues.add(Integer.parseInt(ctx.sizeValue(1).SIGNED_NUMBER().getText()));
+
+        this.sizeValue = null; // clear single size
+        this.droneAmount = Integer.parseInt(ctx.droneAmount().getText());
+        // coords will be collected in enterCoordinate
     }
 
     @Override
@@ -32,20 +50,26 @@ public class ShapeListener extends ShapeGrammarBaseListener {
         this.currentCoords.add(ctx.getText());
     }
 
-
-    @Override
-    public void enterDroneAmount(ShapeGrammarParser.DroneAmountContext ctx) {
-        this.droneAmount = Integer.parseInt(ctx.getText());
-    }
-
     @Override
     public void exitShapeDefinition(ShapeGrammarParser.ShapeDefinitionContext ctx) {
-        System.out.println();
-        this.shapeStack.put(this.currentId, new Shape(ShapeType.fromLexerIdentifier(this.currentType),
-                                                    this.currentId,
-                                                    new Position(this.currentCoords),
-                                                    this.droneAmount));
+        Position position = new Position(this.currentCoords);
+
+        ShapeType shapeType = ShapeType.fromLexerIdentifier(this.currentType);
+
+        Shape shape;
+        if (sizeValue != null) {
+            shape = new Shape(shapeType, currentId, position, droneAmount, sizeValue);
+        } else if (sizeValues != null) {
+            shape = new Shape(shapeType, currentId, position, droneAmount, sizeValues);
+        } else {
+            // fallback: size info missing, construct without size (optional)
+            shape = new Shape(shapeType, currentId, position, droneAmount, 0);
+        }
+
+        this.shapeStack.put(this.currentId, shape);
     }
+
+    // The rest remains the same for animations...
 
     @Override
     public void exitMoveAnimation(ShapeGrammarParser.MoveAnimationContext ctx) {
@@ -58,8 +82,6 @@ public class ShapeListener extends ShapeGrammarBaseListener {
         Shape target = this.shapeStack.get(id);
         if (target != null) { target.addAnimation(move); }
     }
-
-
 
     @Override
     public void exitRotateAnimation(ShapeGrammarParser.RotateAnimationContext ctx) {
