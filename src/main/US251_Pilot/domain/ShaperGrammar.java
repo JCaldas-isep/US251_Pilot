@@ -17,27 +17,20 @@ public class ShaperGrammar {
         ShapeGrammarLexer lexer = new ShapeGrammarLexer(CharStreams.fromFileName("src/main/US251_Pilot/resources/input.md"));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ShapeGrammarParser parser = new ShapeGrammarParser(tokens);
-        ParseTree tree = parser.program(); // parse
+        ParseTree tree = parser.program();
         parseWithListener(tree);
     }
+
     public static void parseWithListener(ParseTree tree) throws IOException {
         ParseTreeWalker walker = new ParseTreeWalker();
         ShapeListener sListener = new ShapeListener();
         walker.walk(sListener, tree);
         Map<String, Shape> shapesList = sListener.getResult();
-        // for (Map.Entry<String, Shape> entry : shapesList.entrySet()) {
-        //     Shape shape = entry.getValue();
-        //     shape.printShape();
-        // }
-        DSLGenerator generator = new DSLGenerator(shapesList);
-        String dslOutput = generator.generate();
-
-        // STEP 4: Write to resources/output.txt
-        try (FileWriter writer = new FileWriter("src/main/US251_Pilot/resources/output.txt")) {
-            writer.write(dslOutput);
-            System.out.println("✅ DSL output saved to resources/output.txt");
-        } catch (IOException e) {
-            System.err.println("❌ Failed to write file: " + e.getMessage());
-        }
+         for (Map.Entry<String, Shape> entry : shapesList.entrySet()) {
+             Shape shape = entry.getValue();
+             shape.printShape();
+         }
+        // DSLGenerator generator = new DSLGenerator(shapesList);
+        // String dslOutput = generator.generate();
     }
 }

@@ -77,8 +77,9 @@ public class ShapeListener extends ShapeGrammarBaseListener {
     public void exitTurnAnimation(ShapeGrammarParser.TurnAnimationContext ctx) {
         String id = ctx.ID().getText();
         String colour = ctx.colour().getText();
+        Double time = Double.parseDouble(ctx.time().SIGNED_NUMBER().getText());
 
-        Turn turn = new Turn(colour);
+        Turn turn = new Turn(colour, time);
         Shape target = this.shapeStack.get(id);
         if (target != null) { target.addAnimation(turn); }
     }

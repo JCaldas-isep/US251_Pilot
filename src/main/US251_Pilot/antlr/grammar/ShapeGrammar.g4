@@ -44,7 +44,7 @@ rotateAnimation
 
 // TURN shape_name <colour>
 turnAnimation
-    : 'TURN' ID '<' colour '>'
+    : 'TURN' ID '<' colour '>' 'FOR' time
     ;
 
 // PAUSE shape_name FOR <time>
